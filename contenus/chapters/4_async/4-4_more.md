@@ -85,3 +85,25 @@ Promise.allSettled([promesse1, promesse2]).then(function (tableauDesResultats) {
 ---
 
 ### _À suivre: [JS moderne](../5_modern_js/ReadMe.md)_
+
+
+#### Exemple :
+
+```js
+const urlAPI = 'https://swapi.dev/api/people';
+//fetch :
+fetch(urlAPI).then(
+
+)
+
+//await :
+try {
+  const response = await fetch(urlAPI)
+  const data = await response.json()
+  console.log(data)
+} catch(error) {
+  console.log(error.message)
+} finally {
+  console.log('finished')
+}
+```

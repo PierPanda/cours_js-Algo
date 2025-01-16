@@ -11,7 +11,11 @@ console.log('*** Assurance vie ***');
  * 2) Créez une boucle for qui multiplie money par 1.02 tous les 6 mois pendant 30 ans
  * 3) Afficher le résultat
  */
-
+const money = 1000
+for (let i = 0; i < 30 * 2; i++) {
+  money *= 1.02
+}
+console.log(money)
 /**========================================================================
  *                           Paires
  *========================================================================**/
