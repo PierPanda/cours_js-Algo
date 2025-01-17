@@ -18,5 +18,21 @@
     <title>Pokemon</title>
   </head>
 
-  <body></body>
+  <body>
+    <h1>
+      <img src="https://www.vodafone.co.uk/newscentre/app/uploads/2023/02/Pokemon_logo.png" alt="Pokemon logo" />
+    </h1>
+
+    <form id="pokemon-filter-form">
+      <label for="page">Page:</label>
+      <input type="number" id="page" name="page" value="1" min="1" required>
+
+      <label for="lang">Langue:</label>
+      <input type="text" id="lang" name="lang" value="fr" required>
+
+      <button type="submit">Filtrer</button>
+    </form>
+
+    <div class="pokemon" id="pokemon-container"></div>
+  </body>
 </html>

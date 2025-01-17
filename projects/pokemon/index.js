@@ -7,6 +7,7 @@ async function getPokemons(number,lang) {
     const response = await fetch(urlAPI);
     const data = await response.json();
     const pokemons = data.pokemon_species;
+    const pokemonDetails = [];
 
     pokemons.forEach(pokemon => {
       const pokeName = pokemon.name;
@@ -19,8 +20,39 @@ async function getPokemons(number,lang) {
           fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokeName}`)
             .then(response => response.json())
             .then(data => {
+              console.log(data);
               const pokeName = data.names.filter(langue => langue.language.name === lang)[0].name;
-              console.log(pokeName, pokeID, pokeImg);
+              pokemonDetails.push({ pokeID, pokeName, pokeImg });
+
+              if (pokemonDetails.length === pokemons.length) {
+                pokemonDetails.sort((a, b) => a.pokeID - b.pokeID);
+
+                // Création de la liste des Pokémon
+                const pokemonList = document.createElement('ul');
+                pokemonList.classList.add('pokemon-list');
+
+                pokemonDetails.forEach(pokemon => {
+                  console.log(pokemon.pokeName, pokemon.pokeID, pokemon.pokeImg);
+
+                  // Création de l'élément de liste pour chaque Pokémon
+                  const pokemonItem = document.createElement('li');
+                  pokemonItem.classList.add('pokemon-item');
+                  pokemonItem.innerHTML = `
+                    <div class="pokemon">
+                      ${pokemon.pokeID} - ${pokemon.pokeName}
+                      <img src="${pokemon.pokeImg}" alt="${pokemon.pokeName}" />
+                    </div>
+                  `;
+
+                  pokemonList.appendChild(pokemonItem);
+                });
+
+                // Ajout de la liste des Pokémon au DOM
+                const container = document.createElement('div');
+                container.classList.add('pokemon-container');
+                container.appendChild(pokemonList);
+                document.body.appendChild(container);
+              }
             });
 
         });
