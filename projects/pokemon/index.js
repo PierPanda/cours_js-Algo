@@ -1,5 +1,3 @@
-
-
 async function getPokemons(number,lang) {
   try {
     // URL de la génération de pokemons
@@ -24,6 +22,7 @@ async function getPokemons(number,lang) {
               const pokeName = data.names.filter(langue => langue.language.name === lang)[0].name;
               console.log(pokeName, pokeID, pokeImg);
             });
+
         });
     });
   } catch (error) {
